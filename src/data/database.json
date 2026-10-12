@@ -1,0 +1,54 @@
+{
+  "clients": [
+    {
+      "name": "Семён"
+    },
+    {
+      "name": "Борис"
+    }
+  ],
+  "couriers": [
+    {
+      "name": "Алёха",
+      "isBusy": true
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "clientName": "Семён",
+      "address": "Улица Ленина 67",
+      "status": "В обработке",
+      "items": [
+        {
+          "productName": "iphone 15",
+          "price": 400,
+          "quantity": 1
+        }
+      ],
+      "deliveryType": "Express",
+      "courierName": "Алёха"
+    },
+    {
+      "id": 2,
+      "clientName": "Борис",
+      "address": "Пункт Выдачи №2",
+      "status": "Доставляется",
+      "items": [
+        {
+          "productName": "Чебупицца со вкусом Пепперони",
+          "price": 2,
+          "quantity": 400
+        },
+        {
+          "productName": "Майонез",
+          "price": 5,
+          "quantity": 10
+        }
+      ],
+      "deliveryType": "Standart",
+      "courierName": "Алёха"
+    }
+  ],
+  "orderIdCounter": 3
+}
