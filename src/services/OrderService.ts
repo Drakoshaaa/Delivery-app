@@ -21,7 +21,7 @@ export class OrderService {
         this.couriers = loaded.couriers;
         this.orders = loaded.orders;
         this.orderIdCounter = loaded.orderIdCounter;
-    }
+    }   
 
     // Сохранение текущего состояния в JSON
     private async persist(): Promise<void> {

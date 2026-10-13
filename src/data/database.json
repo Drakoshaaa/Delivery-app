@@ -9,8 +9,12 @@
   ],
   "couriers": [
     {
-      "name": "Алёха",
+      "name": "Саня",
       "isBusy": true
+    },
+    {
+      "name": "Алексей Навальный",
+      "isBusy": false
     }
   ],
   "orders": [
@@ -26,14 +30,13 @@
           "quantity": 1
         }
       ],
-      "deliveryType": "Express",
-      "courierName": "Алёха"
+      "deliveryType": "Express"
     },
     {
       "id": 2,
       "clientName": "Борис",
       "address": "Пункт Выдачи №2",
-      "status": "Доставляется",
+      "status": "Выполнен",
       "items": [
         {
           "productName": "Чебупицца со вкусом Пепперони",
@@ -46,9 +49,23 @@
           "quantity": 10
         }
       ],
+      "deliveryType": "Standart"
+    },
+    {
+      "id": 3,
+      "clientName": "Семён",
+      "address": "Ул. Профессора Попова 67",
+      "status": "Отменен",
+      "items": [
+        {
+          "productName": "Playstation 5 1TB",
+          "price": 600,
+          "quantity": 3
+        }
+      ],
       "deliveryType": "Standart",
-      "courierName": "Алёха"
+      "courierName": "Саня"
     }
   ],
-  "orderIdCounter": 3
+  "orderIdCounter": 4
 }
