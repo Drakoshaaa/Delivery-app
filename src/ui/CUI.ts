@@ -202,7 +202,7 @@ export class ConsoleUI {
 
         console.log("\n=== Список всех заказов ===");
         orders.forEach(o => {
-            const itemsSum = o.items.reduce((sum, i) => sum + i.getTotalPrice(), 0);
+            const itemsSum = o.getItemsCost();
             const delivery = o.getDelivery();
             const deliveryCost = delivery ? delivery.calculateCost(itemsSum) : 0;
             const deliveryDays = delivery ? delivery.calculateDays(itemsSum) : 0;

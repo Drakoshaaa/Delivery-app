@@ -1,9 +1,11 @@
-export class Courier {
+import { Person } from "./Person" 
+
+export class Courier extends Person {
     private isBusy: boolean = false;
 
-    constructor (
-        public readonly name: string
-    ) {}
+    constructor (name: string, phone: string) {
+        super(name, phone);
+    }
 
     public getIsBusy(): boolean {
         return this.isBusy;
