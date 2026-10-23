@@ -1,19 +1,32 @@
 {
   "clients": [
     {
-      "name": "Семён"
+      "name": "Семён",
+      "phone": "89523420755"
     },
     {
-      "name": "Борис"
+      "name": "Мария",
+      "phone": "89324820094"
+    },
+    {
+      "name": "test",
+      "phone": "666"
     }
   ],
   "couriers": [
     {
-      "name": "Саня",
+      "name": "Алексей Навальный",
+      "phone": "89044269960",
       "isBusy": true
     },
     {
-      "name": "Алексей Навальный",
+      "name": "Мистер П.",
+      "phone": "86666666666",
+      "isBusy": true
+    },
+    {
+      "name": "test courier",
+      "phone": "777",
       "isBusy": false
     }
   ],
@@ -21,50 +34,58 @@
     {
       "id": 1,
       "clientName": "Семён",
-      "address": "Улица Ленина 67",
-      "status": "В обработке",
+      "clientPhone": "89523420755",
+      "country": "Россия",
+      "address": "Тюмень, улица Индустриальная 34",
+      "status": "Ожидает курьера",
       "items": [
         {
-          "productName": "iphone 15",
-          "price": 400,
-          "quantity": 1
-        }
-      ],
-      "deliveryType": "Express"
-    },
-    {
-      "id": 2,
-      "clientName": "Борис",
-      "address": "Пункт Выдачи №2",
-      "status": "Выполнен",
-      "items": [
-        {
-          "productName": "Чебупицца со вкусом Пепперони",
-          "price": 2,
-          "quantity": 400
-        },
-        {
-          "productName": "Майонез",
-          "price": 5,
-          "quantity": 10
-        }
-      ],
-      "deliveryType": "Standart"
-    },
-    {
-      "id": 3,
-      "clientName": "Семён",
-      "address": "Ул. Профессора Попова 67",
-      "status": "Отменен",
-      "items": [
-        {
-          "productName": "Playstation 5 1TB",
-          "price": 600,
-          "quantity": 3
+          "productName": "Шлакоблок пустотелый",
+          "price": 2.5,
+          "weight": 18000,
+          "quantity": 20
         }
       ],
       "deliveryType": "Standart",
-      "courierName": "Саня"
+      "courierName": "Алексей Навальный",
+      "courierPhone": "89044269960"
+    },
+    {
+      "id": 2,
+      "clientName": "Мария",
+      "clientPhone": "89324820094",
+      "country": "Казахстан",
+      "address": "Алматы, улица Конской колбасы 67",
+      "status": "Создан",
+      "items": [
+        {
+          "productName": "Шаверма сырная (дополниельный соус)",
+          "price": 10,
+          "weight": 600,
+          "quantity": 2
+        },
+        {
+          "productName": "Картошка Фри",
+          "price": 5,
+          "weight": 250,
+          "quantity": 1
+        },
+        {
+          "productName": "Кола большая 1л",
+          "price": 3,
+          "weight": 1000,
+          "quantity": 5
+        },
+        {
+          "productName": "соус барбекю",
+          "price": 1,
+          "weight": 50,
+          "quantity": 20
+        }
+      ],
+      "deliveryType": "Express",
+      "courierName": "Мистер П.",
+      "courierPhone": "86666666666"
     }
   ],
   "orderIdCounter": 4

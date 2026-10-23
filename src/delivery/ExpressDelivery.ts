@@ -7,10 +7,11 @@ export class ExpressDelivery implements DeliveryMethodInterface {
         const baseCost: number = 5;
         
         let countryCost: number = 0;
-        if (country == CountryList.RUS) countryCost = 10;
-        else if (country == CountryList.KAZ) countryCost = 20;
-        else if (country == CountryList.BLR) countryCost = 30;
-
+        switch (country) {
+        case CountryList.RUS: countryCost = 10; break
+        case CountryList.KAZ: countryCost = 20; break
+        case CountryList.BLR: countryCost = 30; break
+        }
         const weightCost: number = deliveryFee * (Math.trunc(weight / 1000));
 
         return baseCost + countryCost + weightCost;

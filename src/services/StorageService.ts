@@ -9,18 +9,33 @@ import { DeliveryMethodInterface } from "../delivery/DeliveryMethodInterface.js"
 import { StandartDelivery } from "../delivery/StandartDelivery.js";
 import { ExpressDelivery } from "../delivery/ExpressDelivery.js";
 import { PickupDelivery } from "../delivery/PickupDelivery.js";
+import { CountryList } from "../models/CountryList.js";
 
 interface DatabaseSchema {
-    clients: { name: string }[];
-    couriers: { name: string; isBusy: boolean }[];
+    clients: { 
+        name: string;
+        phone: string;
+    }[];
+    couriers: {
+        name: string;
+        phone: string;
+        isBusy: boolean; 
+    }[];
     orders: {
         id: number;
         clientName: string;
+        clientPhone: string;
+        country: CountryList;
         address: string;
         status: OrderStatus;
-        items: { productName: string; price: number; quantity: number }[];
+        items: { productName: string;
+                price: number;
+                weight: number;
+                quantity: number;
+        }[];
         deliveryType: "Standart" | "Express" | "Pickup";
         courierName?: string;
+        courierPhone?: string;
     }[];
     orderIdCounter: number;
 }
@@ -39,8 +54,8 @@ export class StorageService {
         orderIdCounter: number
     ): Promise<void> {
         const data: DatabaseSchema = {
-            clients: clients.map(c => ({ name: c.name })),
-            couriers: couriers.map(co => ({ name: co.name, isBusy: co.getIsBusy() })),
+            clients: clients.map(c => ({ name: c.name, phone: c.phone})),
+            couriers: couriers.map(co => ({ name: co.name, phone: co.phone, isBusy: co.getIsBusy() })),
             orders: orders.map(o => {
                 let deliveryType: "Standart" | "Express" | "Pickup" = "Standart";
                 const method = o.getDelivery();
@@ -50,15 +65,19 @@ export class StorageService {
                 return {
                     id: o.id,
                     clientName: o.client.name,
+                    clientPhone: o.client.phone,
+                    country: o.country,
                     address: o.address,
                     status: o.getStatus(),
                     items: o.items.map(i => ({
                         productName: i.productName,
                         price: i.price,
+                        weight: i.weight,
                         quantity: i.quantity
                     })),
                     deliveryType,
-                    courierName: o.getCourier()?.name
+                    courierName: o.getCourier()?.name,
+                    courierPhone: o.getCourier()?.phone
                 };
             }),
             orderIdCounter
@@ -77,19 +96,19 @@ export class StorageService {
             const fileContent = await fs.readFile(this.filePath, "utf-8");
             const data: DatabaseSchema = JSON.parse(fileContent);
 
-            const clients = data.clients.map(c => new Client(c.name));
+            const clients = data.clients.map(c => new Client(c.name, c.phone));
 
             const couriers = data.couriers.map(co => {
-                const courier = new Courier(co.name);
+                const courier = new Courier(co.name, co.phone);
                 courier.setIsBusy(co.isBusy);
                 return courier;
             });
 
             const orders = data.orders.map(oData => {
-                const client = clients.find(c => c.name === oData.clientName) || new Client(oData.clientName);
-                const items = oData.items.map(i => new OrderItem(i.productName, i.price, i.quantity));
+                const client = clients.find(c => (c.name === oData.clientName && c.phone === oData.clientPhone)) || new Client(oData.clientName, oData.clientPhone);
+                const items = oData.items.map(i => new OrderItem(i.productName, i.price, i.weight, i.quantity));
                 
-                const order = new Order(oData.id, client, oData.address, items);
+                const order = new Order(oData.id, client, oData.country, oData.address, items);
                 order.setStatus(oData.status);
 
                 let deliveryMethod: DeliveryMethodInterface;
@@ -100,7 +119,7 @@ export class StorageService {
                 order.setDelivery(deliveryMethod);
 
                 if (oData.courierName) {
-                    const foundCourier = couriers.find(co => co.name === oData.courierName);
+                    const foundCourier = couriers.find(co => (co.name === oData.courierName && co.phone === oData.courierPhone));
                     if (foundCourier) {
                         order.setCourier(foundCourier);
                     }
