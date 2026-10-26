@@ -9,8 +9,8 @@
       "phone": "89324820094"
     },
     {
-      "name": "test",
-      "phone": "666"
+      "name": "Саня",
+      "phone": "86666666666"
     }
   ],
   "couriers": [
@@ -25,9 +25,9 @@
       "isBusy": true
     },
     {
-      "name": "test courier",
-      "phone": "777",
-      "isBusy": false
+      "name": "Владимир Владимирович",
+      "phone": "86767676767",
+      "isBusy": true
     }
   ],
   "orders": [
@@ -77,7 +77,7 @@
           "quantity": 5
         },
         {
-          "productName": "соус барбекю",
+          "productName": "Cоус барбекю",
           "price": 1,
           "weight": 50,
           "quantity": 20
@@ -86,6 +86,25 @@
       "deliveryType": "Express",
       "courierName": "Мистер П.",
       "courierPhone": "86666666666"
+    },
+    {
+      "id": 3,
+      "clientName": "Саня",
+      "clientPhone": "86666666666",
+      "country": "Казахстан",
+      "address": "улица Кукушкина 148",
+      "status": "В обработке",
+      "items": [
+        {
+          "productName": "Губная гармошка золотая",
+          "price": 1500,
+          "weight": 500,
+          "quantity": 1
+        }
+      ],
+      "deliveryType": "Express",
+      "courierName": "Владимир Владимирович",
+      "courierPhone": "86767676767"
     }
   ],
   "orderIdCounter": 4
