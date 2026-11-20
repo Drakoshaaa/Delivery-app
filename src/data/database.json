@@ -105,7 +105,24 @@
       "deliveryType": "Express",
       "courierName": "Владимир Владимирович",
       "courierPhone": "86767676767"
+    },
+    {
+      "id": 4,
+      "clientName": "Семён",
+      "clientPhone": "89523420755",
+      "country": "Беларусь",
+      "address": "гойда",
+      "status": "Создан",
+      "items": [
+        {
+          "productName": "трусы с Nekopara",
+          "price": 100,
+          "weight": 500,
+          "quantity": 100000000
+        }
+      ],
+      "deliveryType": "Pickup"
     }
   ],
-  "orderIdCounter": 4
+  "orderIdCounter": 5
 }
